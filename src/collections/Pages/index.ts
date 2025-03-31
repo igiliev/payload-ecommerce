@@ -1,5 +1,4 @@
 import type { CollectionConfig } from 'payload'
-
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { Archive } from '../../blocks/ArchiveBlock/config'
@@ -58,6 +57,27 @@ export const Pages: CollectionConfig<'pages'> = {
     useAsTitle: 'title',
   },
   fields: [
+    {
+      name: 'content',
+      type: 'blocks',
+      blocks: [
+        {
+          slug: 'productsBlock',
+          fields: [
+            {
+              name: 'title',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'limit',
+              type: 'number',
+              defaultValue: 10, // Number of products to show
+            },
+          ],
+        },
+      ],
+    },
     {
       name: 'title',
       type: 'text',

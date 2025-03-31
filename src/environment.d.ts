@@ -5,6 +5,9 @@ declare global {
       DATABASE_URI: string
       NEXT_PUBLIC_SERVER_URL: string
       VERCEL_PROJECT_PRODUCTION_URL: string
+      CRON_SECRET: string
+      NEXT_PUBLIC_PAYLOAD_URL: string
+      NEXT_PUBLIC_PAYLOAD_API_URL: string
     }
   }
 }
