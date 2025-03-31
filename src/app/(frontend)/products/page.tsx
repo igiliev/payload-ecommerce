@@ -5,11 +5,7 @@ const fetchProducts = async () => {
   try {
     console.log('link', `${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/products`)
     const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/products`)
-    // headers: {
-    //   Authorization: `Bearer ${process.env.PAYLOAD_API_KEY}`, // Use your API key here
-    // },
     const data = await res.json()
-    console.log('data', data)
     if (!res.ok) {
       throw new Error(`Failed to fetch: ${res.statusText}`)
     }
