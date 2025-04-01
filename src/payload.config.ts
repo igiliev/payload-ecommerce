@@ -64,22 +64,7 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
-  collections: [
-    Pages,
-    Posts,
-    Media,
-    {
-      slug: 'cars',
-      admin: { useAsTitle: 'title' },
-      fields: [
-        { name: 'title', type: 'text' },
-        { name: 'featuredImage', type: 'upload', relationTo: 'media' },
-      ],
-    },
-    Products,
-    Categories,
-    Users,
-  ],
+  collections: [Pages, Posts, Media, Products, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [

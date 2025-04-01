@@ -70,7 +70,6 @@ export interface Config {
     pages: Page;
     posts: Post;
     media: Media;
-    cars: Car;
     products: Product;
     categories: Category;
     users: User;
@@ -88,7 +87,6 @@ export interface Config {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    cars: CarsSelect<false> | CarsSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -742,17 +740,6 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cars".
- */
-export interface Car {
-  id: string;
-  title?: string | null;
-  featuredImage?: (string | null) | Media;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1029,10 +1016,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
-      } | null)
-    | ({
-        relationTo: 'cars';
-        value: string | Car;
       } | null)
     | ({
         relationTo: 'products';
@@ -1378,16 +1361,6 @@ export interface MediaSelect<T extends boolean = true> {
               filename?: T;
             };
       };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cars_select".
- */
-export interface CarsSelect<T extends boolean = true> {
-  title?: T;
-  featuredImage?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
