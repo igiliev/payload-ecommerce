@@ -1,0 +1,7 @@
+.productsWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal-height rows */
+    grid-template-rows: repeat(3, 1fr); /* 3 equal-width columns */
+    place-items: center;
+    gap: 16px; /* Optional: space between grid items */
+}
