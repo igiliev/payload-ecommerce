@@ -23,8 +23,6 @@ export const RenderBlocks: React.FC<{
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
 
-  console.log('blocks', blocks)
-
   if (hasBlocks) {
     return (
       <Fragment>

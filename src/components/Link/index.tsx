@@ -48,7 +48,12 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   /* Ensure we don't break any styles set by richText */
   if (appearance === 'inline') {
     return (
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
+      <Link
+        className={cn(className)}
+        href={href || url || ''}
+        style={{ font: 'black' }}
+        {...newTabProps}
+      >
         {label && label}
         {children && children}
       </Link>
