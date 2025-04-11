@@ -34,7 +34,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       className="relative z-20 bg-[#FFDDC0] text-black shadow-lg"
       {...(theme ? { 'data-theme': theme } : {})}
     >
-      <div className="container mx-auto flex justify-between items-center p-4">
+      <div className="container mx-auto flex justify-between items-center px-4">
         <Link className="hover:text-gray-300 transition" href="/">
           <Logo loading="eager" priority="high" className="invert dark:invert-0" />
         </Link>

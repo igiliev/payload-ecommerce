@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import './style.scss'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+import Product from '@/components/Product/Product'
 
 interface ProductProps {
   createdAt: string
@@ -70,19 +71,15 @@ export default async function ProductsPage() {
 
   return (
     <div>
-      <h1>Products</h1>
-
       {/* 🧱 Render Blocks from CMS layout */}
       {page?.layout && <RenderBlocks blocks={page.layout} />}
 
-      <hr />
       <ul className="productsWrapper">
         {products.map((product: ProductProps) => (
           <Link href={`/products/${product.id}`} key={product.id}>
             <li key={product.id}>
-              <h2>{product.title}</h2>
-              <p>{product.price} BGN</p>
               <Image src={product.url} alt={product.title} width="350" height="300" />
+              <Product product={product} />
             </li>
           </Link>
         ))}

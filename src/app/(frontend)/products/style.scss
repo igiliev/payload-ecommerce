@@ -3,5 +3,17 @@
     grid-template-columns: repeat(3, 1fr); /* 3 equal-height rows */
     grid-template-rows: repeat(3, 1fr); /* 3 equal-width columns */
     place-items: center;
-    gap: 16px; /* Optional: space between grid items */
+    gap: 5rem; /* Optional: space between grid items */
+    max-width: 86rem;
+    width: 100%;
+    margin: auto;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .productsWrapper {
+        grid-template-columns: repeat(1, 1fr); /* 2 equal-height rows */
+        grid-template-rows: repeat(1, 1fr); /* 2 equal-width columns */
+    }
 }
