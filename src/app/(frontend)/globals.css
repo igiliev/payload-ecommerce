@@ -101,3 +101,11 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+.globalContainer {
+  max-width: 86rem;
+  margin: auto;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}

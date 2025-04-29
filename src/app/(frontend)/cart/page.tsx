@@ -1,5 +1,6 @@
 'use client'
 import { useCart } from '@/app/(frontend)/context/CartContext'
+import CheckoutButton from '@/components/CheckoutButton/CheckoutButton'
 import Link from 'next/link'
 
 export default function CartPage() {
@@ -23,8 +24,10 @@ export default function CartPage() {
     }
   }
 
+  console.log(cart, 'cart from cart page')
+
   return (
-    <div className="p-6 max-w-3xl mx-auto">
+    <div className="globalContainer">
       <h1 className="text-3xl font-bold mb-6">Your Cart</h1>
       {cart.length === 0 ? (
         <p>
@@ -50,6 +53,7 @@ export default function CartPage() {
                   >
                     Remove
                   </button>
+                  {/* <CheckoutButton cart={item} /> */}
                 </div>
               </li>
             ))}
@@ -64,6 +68,7 @@ export default function CartPage() {
               >
                 Checkout
               </button>
+              <CheckoutButton cartItems={cart} />
               <button onClick={clearCart} className="text-gray-500 hover:underline">
                 Clear Cart
               </button>

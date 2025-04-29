@@ -28,13 +28,11 @@ interface ProductProps {
 
 const fetchProducts = async () => {
   try {
-    console.log('link', `${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/products`)
     const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/products`)
     // headers: {
     //   Authorization: `Bearer ${process.env.PAYLOAD_API_KEY}`, // Use your API key here
     // },
     const data = await res.json()
-    console.log('data', data)
     if (!res.ok) {
       throw new Error(`Failed to fetch: ${res.statusText}`)
     }
@@ -61,11 +59,6 @@ const pageData = await pageRes.json()
 const productsData = await productsRes.json()
 
 const page = pageData.docs?.[0]
-// const products = productsData.docs || []
-
-console.log(productsData)
-console.log(pageData)
-
 export default async function ProductsPage() {
   const products: ProductProps[] = await fetchProducts()
 
@@ -76,12 +69,14 @@ export default async function ProductsPage() {
 
       <ul className="productsWrapper">
         {products.map((product: ProductProps) => (
-          <Link href={`/products/${product.id}`} key={product.id}>
-            <li key={product.id}>
-              <Image src={product.url} alt={product.title} width="350" height="300" />
-              <Product product={product} />
-            </li>
-          </Link>
+          <div key={product.id}>
+            <Link href={`/products/${product.id}`} key={product.id}>
+              <li>
+                <Image src={product.url} alt={product.title} width="350" height="300" />
+              </li>
+            </Link>
+            <Product product={product} />
+          </div>
         ))}
       </ul>
     </div>
