@@ -1,5 +1,5 @@
 'use client'
-import { useCart } from '@/app/(frontend)/context/CartContext'
+import { useCart } from '@/app/context/CartContext'
 
 interface ProductProps {
   product: {

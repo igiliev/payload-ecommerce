@@ -19,9 +19,9 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         return <CMSLink className="navLink" key={i} {...link} appearance="link" />
       })}
       <CartIcon />
-      <Link href="/search">
+      {/* <Link href="/search">
         <SearchIcon className="w-5" />
-      </Link>
+      </Link> */}
     </nav>
   )
 }

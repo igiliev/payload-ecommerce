@@ -1,30 +1,11 @@
 'use client'
-import { useCart } from '@/app/(frontend)/context/CartContext'
-import CheckoutButton from '@/components/CheckoutButton/CheckoutButton'
+import { useCart } from '@/app/context/CartContext'
 import Link from 'next/link'
 
 export default function CartPage() {
   const { cart, removeFromCart, clearCart } = useCart()
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0)
-
-  const handleCheckout = async () => {
-    const res = await fetch('/api/checkout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ cart }),
-    })
-
-    const data = await res.json()
-
-    if (data.url) {
-      window.location.href = data.url // Redirect to Stripe Checkout
-    }
-  }
-
-  console.log(cart, 'cart from cart page')
 
   return (
     <div className="globalContainer">
@@ -62,13 +43,12 @@ export default function CartPage() {
           <div className="mt-6 border-t pt-4">
             <p className="text-xl font-semibold">Total: ${total.toFixed(2)}</p>
             <div className="flex gap-4 mt-4">
-              <button
-                onClick={handleCheckout}
+              <Link
+                href="/checkout"
                 className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
               >
                 Checkout
-              </button>
-              <CheckoutButton cartItems={cart} />
+              </Link>
               <button onClick={clearCart} className="text-gray-500 hover:underline">
                 Clear Cart
               </button>

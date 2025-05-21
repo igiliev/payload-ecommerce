@@ -57,10 +57,12 @@ const [pageRes, productsRes] = await Promise.all([
 
 const pageData = await pageRes.json()
 const productsData = await productsRes.json()
-
 const page = pageData.docs?.[0]
+
+// ProductsPage
 export default async function ProductsPage() {
   const products: ProductProps[] = await fetchProducts()
+  console.log('products-page', page)
 
   return (
     <div>
