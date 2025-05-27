@@ -152,13 +152,22 @@ export interface UserAuthOperations {
 export interface Page {
   id: string;
   content?:
-    | {
-        title: string;
-        limit?: number | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'productsBlock';
-      }[]
+    | (
+        | {
+            title: string;
+            limit?: number | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'productsBlock';
+          }
+        | {
+            title: string;
+            videoUrl: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'videoEmbedBlock';
+          }
+      )[]
     | null;
   title: string;
   hero: {
@@ -204,7 +213,7 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | VideoEmbedBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -742,6 +751,17 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoEmbedBlock".
+ */
+export interface VideoEmbedBlock {
+  title: string;
+  videoUrl: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'videoEmbedBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1141,6 +1161,14 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        videoEmbedBlock?:
+          | T
+          | {
+              title?: T;
+              videoUrl?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   title?: T;
   hero?:
@@ -1173,6 +1201,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        videoEmbedBlock?: T | VideoEmbedBlockSelect<T>;
       };
   meta?:
     | T
@@ -1269,6 +1298,16 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoEmbedBlock_select".
+ */
+export interface VideoEmbedBlockSelect<T extends boolean = true> {
+  title?: T;
+  videoUrl?: T;
   id?: T;
   blockName?: T;
 }

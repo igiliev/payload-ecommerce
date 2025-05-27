@@ -11,6 +11,7 @@ import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
+import { VideoEmbedBlock } from '../../blocks/VideoEmbedBlock/config'
 
 import {
   MetaDescriptionField,
@@ -76,6 +77,22 @@ export const Pages: CollectionConfig<'pages'> = {
             },
           ],
         },
+        {
+          slug: 'videoEmbedBlock',
+          fields: [
+            {
+              name: 'title',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'videoUrl',
+              type: 'text',
+              required: true,
+              label: 'Video URL',
+            },
+          ],
+        },
       ],
     },
     {
@@ -95,7 +112,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, VideoEmbedBlock],
               required: true,
               admin: {
                 initCollapsed: true,
