@@ -14,12 +14,12 @@ export const VideoEmbedBlock: React.FC<{
       <div className="aspect-w-16 aspect-h-9">
         {
           <iframe
+            height="420"
             src={`https://www.youtube.com/embed/${videoId}`}
-            className="w-full h-full"
+            className="w-full"
             allowFullScreen={true}
             title={caption || 'Video'}
-            // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            // className="w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           />
         }
       </div>
