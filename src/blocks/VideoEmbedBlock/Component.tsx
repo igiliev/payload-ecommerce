@@ -7,7 +7,6 @@ export const VideoEmbedBlock: React.FC<{
 }> = ({ videoUrl, caption }) => {
   const re = /(?<=watch\?v=)[^&]+/gm
   const videoId = videoUrl.match(re)?.[0] || ''
-  console.log('VideoEmbedBlock', { videoUrl, caption })
 
   return (
     <div className="w-full max-w-4xl mx-auto">

@@ -213,7 +213,15 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | VideoEmbedBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | VideoEmbedBlock
+    | ProductsBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -762,6 +770,19 @@ export interface VideoEmbedBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductsBlock".
+ */
+export interface ProductsBlock {
+  image: string | Media;
+  title: string;
+  price: string;
+  description?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'productsBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1202,6 +1223,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         videoEmbedBlock?: T | VideoEmbedBlockSelect<T>;
+        productsBlock?: T | ProductsBlockSelect<T>;
       };
   meta?:
     | T
@@ -1308,6 +1330,18 @@ export interface FormBlockSelect<T extends boolean = true> {
 export interface VideoEmbedBlockSelect<T extends boolean = true> {
   title?: T;
   videoUrl?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductsBlock_select".
+ */
+export interface ProductsBlockSelect<T extends boolean = true> {
+  image?: T;
+  title?: T;
+  price?: T;
+  description?: T;
   id?: T;
   blockName?: T;
 }
