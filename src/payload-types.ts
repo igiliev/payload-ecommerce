@@ -773,10 +773,8 @@ export interface VideoEmbedBlock {
  * via the `definition` "ProductsBlock".
  */
 export interface ProductsBlock {
-  image: string | Media;
   title: string;
-  price: string;
-  description?: string | null;
+  limit: number;
   id?: string | null;
   blockName?: string | null;
   blockType: 'productsBlock';
@@ -1338,10 +1336,8 @@ export interface VideoEmbedBlockSelect<T extends boolean = true> {
  * via the `definition` "ProductsBlock_select".
  */
 export interface ProductsBlockSelect<T extends boolean = true> {
-  image?: T;
   title?: T;
-  price?: T;
-  description?: T;
+  limit?: T;
   id?: T;
   blockName?: T;
 }

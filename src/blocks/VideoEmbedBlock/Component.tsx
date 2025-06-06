@@ -9,7 +9,7 @@ export const VideoEmbedBlock: React.FC<{
   const videoId = videoUrl.match(re)?.[0] || ''
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto pb-5">
       <div className="aspect-w-16 aspect-h-9">
         {
           <iframe
