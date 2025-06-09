@@ -6,6 +6,7 @@ import { getProducts } from '@/utilities/getProducts'
 import RichText from '@/components/RichText'
 import { animate, stagger } from 'motion'
 import MotionWrapper from '@/components/MotionWrapper'
+import Link from 'next/link'
 
 interface ProductsBlockProps {
   image: ImageProps
@@ -58,23 +59,27 @@ export const ProductsBlock: React.FC<Props> = ({ title, limit }) => {
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-3xl font-bold text-center my-8">{title}</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {limitedProducts.length > 0 ? (
           limitedProducts.map((product) => {
             return (
               <MotionWrapper key={product.id}>
-                <div key={product.id} className="my-4 product-box">
-                  <h1 className="text-xl pb-5">{product.title}</h1>
-                  <Image
-                    src={product.url}
-                    alt={product.title}
-                    width={350}
-                    height={200}
-                    className="h-auto"
-                  />
-                  <p className="py-3">${product.price}</p>
-                  <RichText className="p-0 text-lg" data={product.description} />
-                </div>
+                <Link href={`/products/${product.id}`} key={product.id}>
+                  <div key={product.id} className="my-4 product-box">
+                    <h1 className="text-xl pb-5">{product.title}</h1>
+                    <Image
+                      src={product.url}
+                      alt={product.title}
+                      width={350}
+                      height={200}
+                      className="h-auto w-full"
+                    />
+                    <div className="p-4 border rounded-lg shadow-md h-[140px]">
+                      <p className="py-3">${product.price}</p>
+                      <RichText className="p-0 text-lg" data={product.description} />
+                    </div>
+                  </div>
+                </Link>
               </MotionWrapper>
             )
           })
