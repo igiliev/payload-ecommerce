@@ -1,6 +1,5 @@
 import { getProducts } from '@/utilities/getProducts'
 import Image from 'next/image'
-import RichText from '@/components/RichText'
 import Product from '@/components/Product/Product'
 
 export default async function ProductPage({ params }: { params: { id: string } }) {
